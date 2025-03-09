@@ -1,0 +1,4 @@
+\timing on
+\x auto
+\pset null ?NULL?
+\echo 'Welcome to psql'
