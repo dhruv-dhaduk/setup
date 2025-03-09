@@ -132,7 +132,7 @@ alias fzfp='fzf --preview="cat {}"'
 alias catf='cat "$(fzfp)"'
 alias batf='batcat "$(fzfp)"'
 
-export PATH="$PATH:/opt/nvim-linux64/bin:/opt/cmake/bin:$HOME/.local/bin:/opt/zig:/opt/zen"
+export PATH="$PATH:/opt/nvim-linux64/bin:/opt/cmake/bin:$HOME/.local/bin:/opt/zig:/opt/zen:$HOME/setup"
 
 mkcpp() {
     if [ $# -ne 1 ]; then
