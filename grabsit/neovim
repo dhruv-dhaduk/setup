@@ -9,6 +9,7 @@ else
     cd $NEOVIM_SOURCE_DIR
 fi
 
+sudo apt update
 sudo apt install ninja-build gettext cmake curl build-essential lua5.1 liblua5.1-0-dev
 
 make CMAKE_BUILD_TYPE=RelWithDebInfo
