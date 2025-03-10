@@ -35,7 +35,7 @@ execute() {
 
 cd $script_dir
 
-scripts=$(find ./grabsit -mindepth 1 -maxdepth 1 -executable -type f)
+scripts=$(find ./grabthem -mindepth 1 -maxdepth 1 -executable -type f)
 
 for script in $scripts; do
     if echo "$script" | grep -qv "$filter"; then
