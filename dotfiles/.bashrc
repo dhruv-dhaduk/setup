@@ -197,3 +197,5 @@ fi
 if [ "$enable_powerline" = "yes" ]; then
     eval "$(starship init bash)"
 fi
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
