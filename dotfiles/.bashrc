@@ -130,6 +130,9 @@ alias fzfp='fzf --preview="cat {}"'
 alias catf='cat "$(fzfp)"'
 alias batf='batcat "$(fzfp)"'
 
+bind -x '"\C-f": tmux-sessionizer'
+bind -x '"\C-o": code -r .'
+
 export PATH="$PATH:/opt/nvim-linux64/bin:/opt/cmake/bin:$HOME/.local/bin:/opt/zig:/opt/zen:$HOME/setup:$HOME/.local/scripts"
 
 mkcpp() {
