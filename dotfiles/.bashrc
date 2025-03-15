@@ -108,8 +108,6 @@ alias mntdb='sudo mkdir -p /media/dhruvdhaduk/databases && sudo mount /dev/sda1 
 alias power='upower -i $(upower -e | grep battery) | grep -E "state|to\full|percentage|time to empty|energy-rate"'
 alias mapesc='setxkbmap -option "caps:escape_shifted_capslock"'
 alias pup='power && uptime'
-alias suvo='sudo systemctl stop gdm'
-alias jago='sudo systemctl start gdm'
 alias upgradable='apt list --upgradable'
 alias t='tree'
 alias vimbegood='docker run -it --rm brandoncc/vim-be-good:stable'
@@ -132,7 +130,7 @@ alias fzfp='fzf --preview="cat {}"'
 alias catf='cat "$(fzfp)"'
 alias batf='batcat "$(fzfp)"'
 
-export PATH="$PATH:/opt/nvim-linux64/bin:/opt/cmake/bin:$HOME/.local/bin:/opt/zig:/opt/zen:$HOME/setup"
+export PATH="$PATH:/opt/nvim-linux64/bin:/opt/cmake/bin:$HOME/.local/bin:/opt/zig:/opt/zen:$HOME/setup:$HOME/.local/scripts"
 
 mkcpp() {
     if [ $# -ne 1 ]; then
