@@ -43,3 +43,9 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     vim.highlight.on_yank()
   end,
 })
+
+function makeExecutable()
+  vim.cmd(":! chmod +x " .. vim.fn.fnamemodify(vim.fn.expand("%"), ":."))
+end
+
+vim.keymap.set("n", "<space>X", ":lua makeExecutable() <CR>")
