@@ -23,6 +23,9 @@ vim.keymap.set("v", "<space>x", ":lua<CR>")
 vim.keymap.set("n", "<space><space>y", "<cmd>%y<CR>")
 vim.keymap.set("n", "<Esc>", "<cmd>:nohlsearch<CR>")
 
+vim.keymap.set("n", "<space>k", "<cmd>lua vim.lsp.buf.hover()<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<space>d", "<cmd>lua vim.diagnostic.open_float()<CR>", { noremap = true, silent = true })
+
 vim.api.nvim_create_autocmd("BufWritePost", {
   pattern = { "*.js", "*.jsx", "*.ts", "*.tsx", "*.json", "*.css", "*.scss", "*.html" },
 
