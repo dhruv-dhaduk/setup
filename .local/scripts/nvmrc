@@ -4,16 +4,23 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
+desired_version=""
 
-if [[ -f .nvmrc && -r .nvmrc ]]; then
-    nvm use
+dir="$PWD"
+while [[ "$dir" != "$HOME" && ! -f "$dir/.nvmrc" ]]; do
+    dir="$(dirname "$dir")"
+done
+
+if [[ -f "$dir/.nvmrc" ]]; then
+    desired_version="$(cat "$dir/.nvmrc")"
 else
-    dir="$PWD"
-    while [[ "dir" != "$HOME" && ! -f "$dir/.nvmrc" ]]; do
-        dir="$(dirname "$dir")"
-    done
+    desired_version="$(nvm version default)"
+    desired_version="${desired_version:1}"
+fi
 
-    if [[ -f "$dir/.nvmrc" ]]; then
-        nvm use "$(cat "$dir/.nvmrc")"
-    fi
+current_version="$(nvm version)"
+current_version="${current_version:1}"
+
+if [[ "$desired_version" != "$current_version" ]]; then
+    nvm use "$desired_version"
 fi
