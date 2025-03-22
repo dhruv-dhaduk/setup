@@ -187,6 +187,15 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+LAST_DIR=""
+
+cd_hook() {
+    if [[ "$PWD" != "$LAST_DIR" ]]; then
+        LAST_DIR="$PWD"
+    fi
+}
+
+PROMPT_COMMAND="cd_hook"
 
 enable_powerline=no
 if [ "$TERM" = "xterm-kitty" ]; then
