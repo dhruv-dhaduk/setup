@@ -7,7 +7,7 @@ export NVM_DIR="$HOME/.nvm"
 desired_version=""
 
 dir="$PWD"
-while [[ "$dir" != "$HOME" && ! -f "$dir/.nvmrc" ]]; do
+while [[ "$dir" != "$HOME" && "$dir" != "/" && ! -f "$dir/.nvmrc" ]]; do
     dir="$(dirname "$dir")"
 done
 
