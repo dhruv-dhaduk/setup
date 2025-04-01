@@ -192,7 +192,7 @@ LAST_DIR=""
 cd_hook() {
     if [[ "$PWD" != "$LAST_DIR" ]]; then
         LAST_DIR="$PWD"
-        source nvmrc
+        # source nvmrc
     fi
 }
 
