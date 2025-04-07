@@ -1,4 +1,18 @@
 #!/usr/bin/env bash
 
+TMUX_SOURCE_DIR=$HOME/software/source/tmux
+
+if cd $TMUX_SOURCE_DIR ; then
+    git pull
+else
+    git clone https://github.com/tmux/tmux.git --depth 1 $TMUX_SOURCE_DIR
+    cd $TMUX_SOURCE_DIR
+fi
+
 sudo apt update
-sudo apt install tmux
+sudo apt install -y autoconf automake pkg-config build-essential libevent-dev libncurses-dev bison
+
+cd $TMUX_SOURCE_DIR
+sh autogen.sh
+./configure && make
+sudo make install
