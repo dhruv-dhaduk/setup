@@ -58,6 +58,7 @@ copy_file "./dotfiles/.bashrc" "$HOME"
 copy_file "./dotfiles/.psqlrc" "$HOME"
 copy_file "./dotfiles/.tmux.conf" "$HOME"
 copy_file "./dotfiles/.vimrc" "$HOME"
+copy_file "./dotfiles/.gdbinit" "$HOME"
 copy_file "./dotfiles/.config/starship.toml" "$HOME/.config"
 
 copy_dir "./dotfiles/.config" "$HOME/.config"
