@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+NASM_SOURCE_DOWNLOAD_DIR=$HOME/software/source
+NASM_SOURCE_DIR=$HOME/software/source/nasm-2.16.03
+
+mkdir -p $NASM_SOURCE_DOWNLOAD_DIR
+cd $NASM_SOURCE_DOWNLOAD_DIR
+
+wget https://www.nasm.us/pub/nasm/releasebuilds/2.16.03/nasm-2.16.03.tar.gz
+
+tar -xzf nasm-2.16.03.tar.gz
+
+cd $NASM_SOURCE_DIR
+
+./autogen.sh
+./configure
+make
+sudo make install
