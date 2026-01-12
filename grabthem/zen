@@ -1,0 +1,64 @@
+#!/usr/bin/env bash
+set -e
+
+# -------CONFIG-------
+APP_NAME="zen-browser"
+INSTALL_DIR="/opt/zen-browser"
+BIN_NAME="zen"
+SYMLINK="/usr/local/bin/zen"
+DESKTOP_FILE="$HOME/.local/share/applications/zen-browser.desktop"
+
+ZEN_URL="https://github.com/zen-browser/desktop/releases/latest/download/zen.linux-x86_64.tar.xz"
+TMP_DIR="$(mktemp -d)"
+# --------------------
+
+
+echo "==> Downloading Zen Browser..."
+curl -L "$ZEN_URL" -o "$TMP_DIR/zen.tar.xz"
+
+echo "==> Extracting..."
+tar -xf "$TMP_DIR/zen.tar.xz" -C "$TMP_DIR"
+
+EXTRACTED_DIR="$(find "$TMP_DIR" -maxdepth 1 -type d -name "zen*" | head -n 1)"
+
+if [[ -z "$EXTRACTED_DIR" ]]; then
+	echo "Failed to find extracted Zen directory"
+	exit 1
+fi
+
+echo "==> Installing to $INSTALL_DIR..."
+sudo rm -rf "$INSTALL_DIR"
+sudo mv "$EXTRACTED_DIR" "$INSTALL_DIR"
+
+echo "==> Ensuring executable permission..."
+sudo chmod +x "$INSTALL_DIR/$BIN_NAME"
+
+echo "==> Creating symlink $SYMLINK..."
+sudo ln -sf "$INSTALL_DIR/$BIN_NAME" "$SYMLINK"
+
+echo "==> Creating desktop entry..."
+mkdir -p "$(dirname $DESKTOP_FILE)"
+
+cat > "$DESKTOP_FILE" <<EOF
+[Desktop Entry]
+Name=Zen Browser
+Comment=Privacy-focused web browser
+Exec=$SYMLINK %u
+Icon=$INSTALL_DIR/browser/chrome/icons/default/default128.png
+Terminal=false
+Type=Application
+
+Categories=Network;WebBrowser;
+StartupNotify=true
+StartupWMClass=zen
+
+EOF
+
+echo "==> Updating desktop database..."
+update-desktop-database "$HOME/.local/share/applications"
+
+echo "==> Cleaning up..."
+rm -rf "$TEMP_DIR"
+
+echo "==> Zen Browser installed successfully."
+
