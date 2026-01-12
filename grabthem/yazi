@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+YAZI_SOURCE_DIR=$HOME/software/source/yazi
+
+if cd $YAZI_SOURCE_DIR; then
+    git pull
+else
+    git clone https://github.com/sxyazi/yazi.git --depth 1 $YAZI_SOURCE_DIR
+    cd $YAZI_SOURCE_DIR
+fi
+
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+source $HOME/.cargo/env
+rustup update
+
+sudo apt update
+sudo apt install ffmpeg 7zip jq poppler-utils fd-find ripgrep zoxide imagemagick
+
+cargo build --release --locked
+
+sudo cp target/release/yazi /usr/local/bin/
+sudo cp target/release/ya /usr/local/bin/

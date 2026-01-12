@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+NEOVIM_SOURCE_DIR=$HOME/software/source/neovim
+
+if cd $NEOVIM_SOURCE_DIR ; then
+    git pull
+else
+    git clone https://github.com/neovim/neovim.git --depth 1 $NEOVIM_SOURCE_DIR
+    cd $NEOVIM_SOURCE_DIR
+fi
+
+sudo apt update
+sudo apt install ninja-build gettext cmake curl build-essential lua5.1 liblua5.1-0-dev
+
+make CMAKE_BUILD_TYPE=RelWithDebInfo
+sudo make install
