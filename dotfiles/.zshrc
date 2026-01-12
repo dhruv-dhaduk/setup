@@ -1,5 +1,8 @@
 bindkey -e
 
+PATH="$PATH:$HOME/.local/scripts"
+PATH="$PATH:$HOME/setup"
+
 HISTSIZE=10000
 SAVEHIST=10000
 HISTFILE=~/.zsh_history
