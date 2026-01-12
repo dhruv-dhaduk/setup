@@ -1,6 +1,7 @@
 bindkey -e
 
 PATH="$PATH:$HOME/.local/scripts"
+PATH="$PATH:$HOME/.local/bin"
 PATH="$PATH:$HOME/setup"
 
 HISTSIZE=10000
