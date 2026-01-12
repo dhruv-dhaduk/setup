@@ -16,3 +16,8 @@ cd $TMUX_SOURCE_DIR
 sh autogen.sh
 ./configure && make
 sudo make install
+
+echo "Downloading tmux plugin manager"
+
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
