@@ -62,3 +62,4 @@ copy_file "./dotfiles/.gdbinit" "$HOME"
 copy_file "./dotfiles/.ready-tmux" "$HOME"
 
 copy_dir "./.local" "$HOME/.local"
+copy_dir "./dotfiles/.config" "$HOME/.config"
