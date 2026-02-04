@@ -40,7 +40,6 @@ alias mntdb='sudo mkdir -p /media/dhruvdhaduk/databases && sudo mount /dev/sda1 
 alias power='upower -i $(upower -e | grep battery) | grep -E "state|to\full|percentage|time to empty|energy-rate"'
 alias mapesc='setxkbmap -option "caps:escape_shifted_capslock"'
 alias pup='power && uptime'
-alias upgradable='apt list --upgradable'
 alias t='tree'
 alias vimbegood='docker run -it --rm brandoncc/vim-be-good:stable'
 alias start-windows='cd ~/Windows && docker-compose up -d && cd -'
@@ -58,6 +57,10 @@ alias codefh='code "$(find ~ -type d \( -path "*/.*" -o -name "node_modules" -o 
 alias fzfp='fzf --preview="cat {}"'
 alias catf='cat "$(fzfp)"'
 alias batf='batcat "$(fzfp)"'
+
+upgradable() {
+	apt list --upgradable 2>/dev/null | { IFS= read -r first && printf '%s\n' "$first"; grep -v -i --color=never "nvidia"; }
+}
 
 tmux-sessionizer-widget() {
   BUFFER="$(tmux-sessionizer)"
